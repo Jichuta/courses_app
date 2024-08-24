@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('courses/', include('courses.urls')),
     path('admin/', admin.site.urls),
+    path('', lambda request: redirect('courses:login_page')),  # Redirect root URL to login_page
 ]

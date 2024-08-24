@@ -1,6 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import Teacher, Student, Course, CourseStudent, Attendance, CustomUser
+from .models import Teacher, Student, Course, CourseStudent, Attendance
 
 class TeacherAdmin(admin.ModelAdmin):
     list_display = ['name', 'ci', 'age']
@@ -51,4 +50,3 @@ admin.site.register(CourseStudent, CourseStudentAdmin)
 admin.site.register(Attendance, AttendanceAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register([Student,])
-admin.site.register(CustomUser, UserAdmin)

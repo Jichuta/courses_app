@@ -14,6 +14,9 @@ def index(request):
     return render(request, 'courses/index.html', context)
 
 def course_detail(request, course_id):
+    encoded_role = request.session.get('user_role')
+    print(">>>>>>> user_role >>>>>" + str(encoded_role))
+    
     course = get_object_or_404(Course, pk=course_id)
     students = CourseStudent.objects.filter(course=course)
 
