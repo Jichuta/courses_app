@@ -1,3 +1,5 @@
+{% include 'partials/navbar.html' %}
+    
     <h2>Add a New Course</h2>
     <form action="{% url 'courses:save_course' %}" method="post">
         {% csrf_token %}
@@ -15,6 +17,20 @@
             <br>
             <label for="start_date">Start Date:</label>
             <input type="date" name="start_date" id="start_date" required>
+            <br>
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" id="end_date" required>
+            <br>
+            <label for="state">Estado:</label>
+            <select name="state" id="state" required>
+                <option value="Inactivo">Inactivo</option>
+                <option value="Activo">Activo</option>
+                <option value="Concluido">Concluido</option>
+                <option value="Anulado">Anulado</option>
+            </select>
+            <br>
+            <label for="material_curso">Material del Curso:</label>
+            <input type="text" name="material_curso" id="material_curso" required>
             <br>
         </fieldset>
         <input type="submit" value="Add Course">

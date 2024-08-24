@@ -1,5 +1,50 @@
-<ul>
+<!-- <ul>
     {% for course in courses %}
     <li><a href="{% url 'courses:course_detail' course.id %}">{{ course.name }}</a></li>
     {% endfor %}
-</ul>
+</ul> -->
+<style>
+    table {
+      border-collapse: collapse;
+    }
+    tr, td, th { 
+      border: solid;
+      border-width: 1px;
+      padding: 5px;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Teacher</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>State</th>
+            {% if request.session.user_role == "director" or request.session.user_role == "administrador" %}
+            <th>Actions</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td><a href="{% url 'courses:course_detail' course.id %}">{{ course.name }}</a></td>
+            <td>{{ course.teacher }}</td>
+            <td>{{ course.start_date }}</td>
+            <td>{{ course.end_date }}</td>
+            <td>{{ course.state }}</td>
+            {% if request.session.user_role == "director" or request.session.user_role == "administrador" %}
+            <td>
+
+                <form action="{% url 'courses:delete_course' course.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
