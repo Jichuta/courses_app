@@ -130,6 +130,13 @@ ENV/
 env.bak/
 venv.bak/
 
+# Ignore editor specific files
+.vscode/
+.idea/
+
+# Ignore macOS specific files
+.DS_Store
+
 # Spyder project settings
 .spyderproject
 .spyproject

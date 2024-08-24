@@ -1,0 +1,16 @@
+<h1>Añadir nuevo estudiante al curso "{{ course.name }}"</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="student">Estudiante:</label>
+    <select name="student" id="student">
+        {% for student in students %}
+            <option value="{{ student.id }}">{{ student.name }} (CI: {{ student.ci }})</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="grade">Nota:</label>
+    <input type="number" name="grade" id="grade" min="0" max="100">
+    <br>
+    <button type="submit">Añadir estudiante</button>
+</form>

@@ -1,0 +1,20 @@
+<h1>Teacher</h1>
+
+<form action="{% url 'courses:save_teacher' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h2>Registro de Teachers</h2></legend>
+        {% if error_message %}<p><string>{{ error_message }}</string></p>{% endif %}
+        <label for="name">Nombre</label><input type="text" name="name" id="name"/>
+        <label for="ci">CI</label><input type="text" name="ci" id="ci"/>
+        <label for="ci">Age</label><input type="text" name="age" id="age"/>
+    </fieldset>
+    <input type="submit" value="Registrar"/>
+</form>
+
+<h2>Lista de Teachers</h2>
+<ul>
+    {% for teacher in teachers %}
+    <li>{{ teacher.name }}</li>
+    {% endfor%}
+</ul>

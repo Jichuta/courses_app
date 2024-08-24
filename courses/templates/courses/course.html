@@ -1,0 +1,26 @@
+    <h2>Add a New Course</h2>
+    <form action="{% url 'courses:save_course' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Course Information</legend>
+            <label for="name">Course Name:</label>
+            <input type="text" name="name" id="name" required>
+            <br>
+            <label for="teacher">Teacher:</label>
+            <select name="teacher" id="teacher" required>
+                {% for teacher in teachers %}
+                    <option value="{{ teacher.id }}">{{ teacher.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" id="start_date" required>
+            <br>
+        </fieldset>
+        <input type="submit" value="Add Course">
+    </form>
+
+    {% if error_message %}
+        <p style="color:red">{{ error_message }}</p>
+    {% endif %}
+

@@ -1,0 +1,19 @@
+<h1>Estudiantes</h1>
+
+<form action="{% url 'courses:save_student' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h2>Registro de Estudiantes</h2></legend>
+        {% if error_message %}<p><string>{{ error_message }}</string></p>{% endif %}
+        <label for="name">Nombre</label><input type="text" name="name" id="name"/>
+        <label for="ci">CI</label><input type="text" name="ci" id="ci"/>
+    </fieldset>
+    <input type="submit" value="Registrar"/>
+</form>
+
+<h2>Lista de Estudiantes</h2>
+<ul>
+    {% for student in students %}
+    <li>{{ student.name }}</li>
+    {% endfor%}
+</ul>
