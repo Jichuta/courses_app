@@ -58,13 +58,13 @@ Implementar un sistema que permita administrar cursos de capacitación de corta 
 
 
 ## Features adicionales
-# Director
+### Director
 - [x] Agregar nuevo estudiante
 - [x] Ver los estudiantes inscritos a un curso
 - [x] Registrar la inscripcion de un estudiante al un curso
 - [x] Registrar nuevo professor
 - [x] Assignar un profesor a un determinado curso, cuando se crea el curso
-# Profesor
+### Profesor
 - [x] Ver los cursos en los que esta a cargo
 - [x] Inscribir nuevos estudiantes
-# Estudiante
+### Estudiante
