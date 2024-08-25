@@ -21,5 +21,6 @@ border-left: 1px solid #CCCCCC;
   {% if request.session.user_role == "director" or request.session.user_role == "administrador" %}
       <a href="http://localhost:8000/courses/add_course/" class="button">Nuevo Curso</a>
       <a href="http://localhost:8000/courses/student/" class="button">Nuevo Estudiante</a>
+      <a href="http://localhost:8000/courses/teacher/" class="button">Nuevo Professor</a>
   {% endif %}
 </div>

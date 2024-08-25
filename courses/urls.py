@@ -2,7 +2,7 @@ from django.urls import path, re_path
 from django.shortcuts import redirect
 from . import view
 from .views.views_students import save_student
-from .views.views_teacher import save_teacher
+from .views.views_teacher import save_teacher, delete_teacher
 from .views.view_course import add_course, delete_course
 from .views.views_courses import course_detail
 from .views.views_coursestudent import add_course_student
@@ -24,6 +24,7 @@ urlpatterns = [
     path('user_login', user_login, name='user_login'),
     path('logout', user_logout, name='user_logout'),
     path('course/<int:course_id>/delete/', delete_course, name="delete_course"),
+    path('<int:teacher_id>/delete/', delete_teacher, name="delete_teacher"),
 
     # Catch-all pattern to redirect to login_page
     re_path(r'^.*$', lambda request: redirect('courses:login_page'), name='catch_all'),

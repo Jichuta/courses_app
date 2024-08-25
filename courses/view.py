@@ -4,7 +4,16 @@ from .models import Course, Student, Teacher
 
 # Create your views here.
 def index(request):
-    courses = get_list_or_404(Course)
+    try:
+        courses = get_list_or_404(Course)
+    except:
+        courses = []
+
+    user_role = request.session.get('user_role')
+    user_name = request.session.get('username')
+
+    if user_role == 'profesor':
+        courses = [course for course in courses if course.teacher.username == user_name]
 
     context = {
         'courses': courses
@@ -20,14 +29,20 @@ def course_detail(request, course_id):
     return HttpResponse(response % course.name)
 
 def students(request):
-    students = get_list_or_404(Student)
+    try:
+        students = get_list_or_404(Student)
+    except:
+        students = []    
 
     context = {'students': students}
 
     return render(request, 'courses/students.html', context)
 
 def teachers(request):
-    teachers = get_list_or_404(Teacher)
+    try:
+        teachers = get_list_or_404(Teacher)
+    except:
+        teachers = []   
 
     context = {'teachers': teachers}
 

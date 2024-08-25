@@ -1,22 +1,83 @@
 {% include 'partials/navbar.html' %}
 
-<h1>Teacher</h1>
+<style>
+    table {
+      border-collapse: collapse;
+    }
+    tr, td, th { 
+      border: solid;
+      border-width: 1px;
+      padding: 5px;
+    }
 
+    .button {
+      font: bold 11px Arial;
+      text-decoration: none;
+      background-color: #EEEEEE;
+      color: #333333;
+      padding: 2px 6px 2px 6px;
+      border-top: 1px solid #CCCCCC;
+      border-right: 1px solid #333333;
+      border-bottom: 1px solid #333333;
+      border-left: 1px solid #CCCCCC;
+    }
+</style>
+
+<h1>Teacher</h1>
 <form action="{% url 'courses:save_teacher' %}" method="post">
     {% csrf_token %}
     <fieldset>
         <legend><h2>Registro de Teachers</h2></legend>
         {% if error_message %}<p><string>{{ error_message }}</string></p>{% endif %}
-        <label for="name">Nombre</label><input type="text" name="name" id="name"/>
-        <label for="ci">CI</label><input type="text" name="ci" id="ci"/>
-        <label for="ci">Age</label><input type="text" name="age" id="age"/>
+        <label for="name">Nombre</label><input type="text" name="name" id="name" required/>
+        <br>
+        <label for="username">Nombre de usuario</label><input type="text" name="username" id="username" required/>
+        <br>
+        <label for="ci">CI</label><input type="text" name="ci" id="ci" required/>
+        <br>
+        <label for="ci">Age</label><input type="text" name="age" id="age" required/>
     </fieldset>
+    <br>
     <input type="submit" value="Registrar"/>
+    <a href="http://localhost:8000/courses/" class="button">Volver</a>
 </form>
 
-<h2>Lista de Teachers</h2>
+<!-- <h2>Lista de Teachers</h2>
 <ul>
     {% for teacher in teachers %}
-    <li>{{ teacher.name }}</li>
+    <li>{{teacher.username}}  - {{ teacher.name }} - {{teacher.ci}} - {{teacher.age}}</li>
     {% endfor%}
-</ul>
+</ul> -->
+
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>CI </th>
+            <th>Age</th>
+            {% if request.session.user_role == "director" or request.session.user_role == "administrador" %}
+            <th>Actions</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for teacher in teachers%}
+        <tr>
+            <td>{{ teacher.username }}</td>
+            <td>{{ teacher.name }}</td>
+            <td>{{ teacher.ci }}</td>
+            <td>{{ teacher.age}}</td>
+            {% if request.session.user_role == "director" or request.session.user_role == "administrador" %}
+            <td>
+                <form action="{% url 'courses:delete_teacher' teacher.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

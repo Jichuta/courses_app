@@ -17,9 +17,9 @@ $ source .venv/bin/activate
 $ pip install -r requirements.txt
 $ deactivate
 
-$ python manage.py makemigrations courses
-$ python manage.py migrate
-$ python manage.py runserver
+$ python3 manage.py makemigrations courses
+$ python3 manage.py migrate
+$ python3 manage.py runserver
 ```
 
 ## Features
@@ -29,8 +29,8 @@ $ python manage.py runserver
 Implementar un sistema que permita administrar cursos de capacitación de corta duración (de 2 a 4 semanas), a continuación se describen los requerimientos solicitados.
 
 - [ ] Los tipos de usuarios del sistema son: Administrador, Director, Profesor, Estudiante y cada uno con un rol especifico.
-- [ ] Solo los usuarios de tipo Administrador y Director pueden acceder al 'admin' del sistema.
-- [ ] Administradores: tipo de usuario con acceso total del sistema (super user), es el único rol que puede crear usuarios de otros tipos a requerimiento.
+- [x] Solo los usuarios de tipo Administrador y Director pueden acceder al 'admin' del sistema.
+- [x] Administradores: tipo de usuario con acceso total del sistema (super user), es el único rol que puede crear usuarios de otros tipos a requerimiento.
 - [ ] Directores: Pueden realizar las siguientes acciones:
 - - [x] Pueden crear cursos y asignar profesores a cursos.
 - - [x] Ver cursos existentes.
@@ -46,7 +46,7 @@ Implementar un sistema que permita administrar cursos de capacitación de corta 
 - - [ ] Registro de las notas de cada estudiante inscrito.
 - - [x] Material del curso. El material del curso consiste en información compuesta por un título y el contenido del material (solo texto, no se necesita subir archivos).
 - [ ] Profesores: Pueden realizar las siguientes acciones:
-- - [ ] Ver los cursos de los que están a cargo.
+- - [x] Ver los cursos de los que están a cargo.
 - - [ ] Registrar la asistencia de los estudiantes de cada curso.
 - - [ ] Agregar material al curso.
 - [ ] Estudiantes: Pueden realizar las siguientes actividades:
@@ -58,9 +58,13 @@ Implementar un sistema que permita administrar cursos de capacitación de corta 
 
 
 ## Features adicionales
-Director
+# Director
 - [x] Agregar nuevo estudiante
 - [x] Ver los estudiantes inscritos a un curso
 - [x] Registrar la inscripcion de un estudiante al un curso
+- [x] Registrar nuevo professor
+- [x] Assignar un profesor a un determinado curso, cuando se crea el curso
 Profesor
+- [x] Ver los cursos en los que esta a cargo
+- [x] Inscribir nuevos estudiantes
 Estudiante

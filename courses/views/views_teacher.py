@@ -3,7 +3,10 @@ from django.http import HttpResponse, Http404
 from ..models import Teacher
 
 def teachers(request):
-    teachers = get_list_or_404(Teacher)
+    try:
+        teachers = get_list_or_404(Teacher)
+    except:
+        teachers = []    
 
     context = {'teachers': teachers}
 
@@ -14,7 +17,8 @@ def save_teacher(request):
         teacher = Teacher(
             name=request.POST['name'],
             ci=request.POST['ci'],
-            age=request.POST['age']
+            age=request.POST['age'],
+            username=request.POST['username']
         )
         teacher.save()
         return redirect('courses:teacher')
@@ -25,3 +29,10 @@ def save_teacher(request):
             'error_message': 'Huvo un error'
         }
         return render(request, 'courses/teacher.html', context)
+    
+def delete_teacher(request, teacher_id):
+    teacher = get_object_or_404(Teacher, id=teacher_id)
+    if request.method == 'POST':
+        teacher.delete()
+        return redirect('courses:teacher')  # Redirect after deletion
+    return render(request, 'courses/delete_teacher.html', {'teacher': teacher})     

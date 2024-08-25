@@ -4,6 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class Teacher(models.Model):
     name = models.CharField(max_length=200)
+    username = models.CharField(max_length=30, default="juan", unique=True)
     ci = models.IntegerField(default=0)
     age = models.IntegerField(default=0)
 
