@@ -13,7 +13,8 @@ def save_student(request):
     try:
         student = Student(
             name=request.POST['name'],
-            ci=request.POST['ci']
+            ci=request.POST['ci'],
+            username=request.POST['username'],
         )
         student.save()
         return redirect('courses:students')

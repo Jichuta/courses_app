@@ -31,7 +31,7 @@ $ python3 manage.py runserver
 
 Implementar un sistema que permita administrar cursos de capacitación de corta duración (de 2 a 4 semanas), a continuación se describen los requerimientos solicitados.
 
-- [ ] Los tipos de usuarios del sistema son: Administrador, Director, Profesor, Estudiante y cada uno con un rol especifico.
+- [x] Los tipos de usuarios del sistema son: Administrador, Director, Profesor, Estudiante y cada uno con un rol especifico.
 - [x] Solo los usuarios de tipo Administrador y Director pueden acceder al 'admin' del sistema.
 - [x] Administradores: tipo de usuario con acceso total del sistema (super user), es el único rol que puede crear usuarios de otros tipos a requerimiento.
 - [ ] Directores: Pueden realizar las siguientes acciones:
@@ -53,11 +53,12 @@ Implementar un sistema que permita administrar cursos de capacitación de corta 
 - - [x] Registrar la asistencia de los estudiantes de cada curso.
 - - [ ] Agregar material al curso.
 - [ ] Estudiantes: Pueden realizar las siguientes actividades:
-- - [ ] Un estudiante puede ser registrado por el administrador y también puede registrarse por su cuenta en el sistema (usuario de tipo Estudiante).
+- - [x] Un estudiante puede ser registrado por el administrador
+- - [ ] también puede registrarse por su cuenta en el sistema (usuario de tipo Estudiante).
 - - [ ] Puede inscribirse a cursos que todavía no han empezado.
 - - [ ] Ver los cursos a los que se ha inscrito (y sus notas).
 - - [ ] Ver el contenido de los cursos a los que está inscrito.
-- [ ] Todos los tipos de usuario deben ingresar al sistema con su nombre de usuario y contraseña.
+- [x] Todos los tipos de usuario deben ingresar al sistema con su nombre de usuario y contraseña.
 
 
 ## Features adicionales
@@ -71,3 +72,9 @@ Implementar un sistema que permita administrar cursos de capacitación de corta 
 - [x] Ver los cursos en los que esta a cargo
 - [x] Inscribir nuevos estudiantes
 ### Estudiante
+
+
+### Sql quesries
+```bash
+update courses_student set username = 'rodrigo.mamani' where id =2;
+```

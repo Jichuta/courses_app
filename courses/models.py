@@ -14,6 +14,7 @@ class Teacher(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=200)
     ci = models.IntegerField()
+    username = models.CharField(max_length=30, default="juan", unique=True)
 
     def __str__(self):
         return '{} (CI: {})'.format(self.name, self.ci)

@@ -31,6 +31,9 @@
         <legend><h2>Registro de Estudiantes</h2></legend>
         {% if error_message %}<p><string>{{ error_message }}</string></p>{% endif %}
         <label for="name">Nombre</label><input type="text" name="name" id="name"/>
+        <br>
+        <label for="username">Nombre de usuario</label><input type="text" name="username" id="username" required/>
+        <br>
         <label for="ci">CI</label><input type="text" name="ci" id="ci"/>
     </fieldset>
     <input type="submit" value="Registrar"/>
