@@ -1,6 +1,11 @@
 # Diango courses_app
 Course app with Django
 
+### REPO url
+```bash
+$ git clone https://github.com/Jichuta/courses_app.git
+```
+### Python version
 ```bash
 $ python3 -m django --version
 $ 4.2.15
