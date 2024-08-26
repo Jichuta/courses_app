@@ -78,3 +78,19 @@ Implementar un sistema que permita administrar cursos de capacitación de corta 
 ```bash
 update courses_student set username = 'rodrigo.mamani' where id =2;
 ```
+
+### Credentials
+```bash
+- ADMIN
+username=admin
+password=abc.123
+- Director
+username=superuser
+password=Abc.12345678
+- Profersor
+username=juan.perez
+password=Abc.12345678
+- Estudiante
+username=douglas.mamani
+password=Abc.12345678
+```
