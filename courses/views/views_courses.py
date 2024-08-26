@@ -60,29 +60,27 @@ def course_detail(request, course_id):
     return render(request, 'courses/course_detail.html', context)    
 
 def register_attendance(request, student_id):
-    print("ingrsando ----->")
     if request.method == "POST":
         try:
             attendance_type = request.POST.get('attendance_type')
             student_course = get_object_or_404(CourseStudent, pk=student_id)
-            print("ingrsando -----> 1111")
+
             # Verify if today's date is within the course's start and end dates
             today = timezone.now().date()
             course = student_course.course
             if today < course.start_date or today > course.end_date:
                 messages.error(request, 'No se puede registrar la asistencia fuera de las fechas del curso.')
                 return redirect('courses:course_detail', course_id=course.id)
-            print("ingrsando -----> 22222")
+
             # Create a new attendance record
             Attendance.objects.create(
                 course_student=student_course,
                 date=today,
                 type=attendance_type
             )
-            print("ingrsando -----> 33333")
+
             messages.success(request, 'Asistencia registrada correctamente.')
         except Exception as e:
-            print("ingrsando -----> 44444" + str(e))
             messages.error(request, f'Error al registrar la asistencia: {str(e)}')
 
         return redirect('courses:course_detail', course_id=course.id)

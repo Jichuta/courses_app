@@ -8,8 +8,6 @@ def login_page(request):
     return render (request, 'courses/login.html', {})
 
 def user_login(request):
-    print(">>>>>>> ingresando login >>>>>>>", str(request))
-
     # Check if the user is already logged in
     if request.user.is_authenticated:
         user_name = request.session.get('username')
