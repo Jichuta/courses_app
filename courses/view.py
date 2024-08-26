@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, Http404
-from .models import Course, Student, Teacher
+from .models import Course, Student, Teacher, CourseStudent
 from django.utils import timezone
 
 # Create your views here.
@@ -18,14 +18,32 @@ def index(request):
         courses = [course for course in courses if course.teacher.username == user_name]
 
     if user_role == 'estudiante':
-        courses = [course for course in courses if today < course.start_date]
+        # courses = [course for course in courses if today < course.start_date]
 
+        # if len(courses) == 0:
+        #     courses = []
 
-        if len(courses) == 0:
-            courses = []
-        
-        print("Filtered courses:", courses)
-        print("Number of courses:", len(courses))
+        try:
+            student = get_object_or_404(Student, username=user_name) # Student.objects.get(username=user_name)
+            print("Student : " + str(student))
+        except Student.DoesNotExist:
+            student = None
+            registered_courses = []
+
+        if student:
+            # registered_courses = CourseStudent.objects.filter(student__username=user_name).values_list('course', flat=True)
+            registered_courses = get_list_or_404(CourseStudent, student=student)
+            registered_courses_filter = [course_student.course for course_student in registered_courses]
+
+        # Filter the courses that have not started yet
+        upcoming_courses = [course for course in courses if today < course.start_date]
+    
+        # Combine the registered courses with the upcoming courses
+        # Use a set to avoid duplicates
+        combined_courses = set(registered_courses_filter) | set(upcoming_courses)
+    
+        # Convert back to a list if needed
+        courses = list(combined_courses)
 
 
     context = {
