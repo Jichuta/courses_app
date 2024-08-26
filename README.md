@@ -16,7 +16,10 @@ $ python3 -m venv .venv
 $ source .venv/bin/activate
 $ pip install -r requirements.txt
 $ deactivate
-
+```
+## 
+```bash
+$ python manage.py createsuperuser
 $ python3 manage.py makemigrations courses
 $ python3 manage.py migrate
 $ python3 manage.py runserver
@@ -41,13 +44,13 @@ Implementar un sistema que permita administrar cursos de capacitación de corta 
 - - [x] Fecha de inicio
 - - [x] Fecha de fin
 - - [x] Estado Activo, Inactivo, Concluido y Anulado
-- - [ ] Estudiantes inscritos al curso
-- - [ ] Registro de Asistencia de estudiantes
+- - [x] Estudiantes inscritos al curso
+- - [x] Registro de Asistencia de estudiantes
 - - [ ] Registro de las notas de cada estudiante inscrito.
 - - [x] Material del curso. El material del curso consiste en información compuesta por un título y el contenido del material (solo texto, no se necesita subir archivos).
 - [ ] Profesores: Pueden realizar las siguientes acciones:
 - - [x] Ver los cursos de los que están a cargo.
-- - [ ] Registrar la asistencia de los estudiantes de cada curso.
+- - [x] Registrar la asistencia de los estudiantes de cada curso.
 - - [ ] Agregar material al curso.
 - [ ] Estudiantes: Pueden realizar las siguientes actividades:
 - - [ ] Un estudiante puede ser registrado por el administrador y también puede registrarse por su cuenta en el sistema (usuario de tipo Estudiante).

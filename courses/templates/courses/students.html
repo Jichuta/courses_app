@@ -1,5 +1,28 @@
 {% include 'partials/navbar.html' %}
 
+<style>
+    table {
+      border-collapse: collapse;
+    }
+    tr, td, th { 
+      border: solid;
+      border-width: 1px;
+      padding: 5px;
+    }
+
+    .button {
+      font: bold 11px Arial;
+      text-decoration: none;
+      background-color: #EEEEEE;
+      color: #333333;
+      padding: 2px 6px 2px 6px;
+      border-top: 1px solid #CCCCCC;
+      border-right: 1px solid #333333;
+      border-bottom: 1px solid #333333;
+      border-left: 1px solid #CCCCCC;
+    }
+</style>
+
 <h1>Estudiantes</h1>
 
 <form action="{% url 'courses:save_student' %}" method="post">
@@ -11,6 +34,7 @@
         <label for="ci">CI</label><input type="text" name="ci" id="ci"/>
     </fieldset>
     <input type="submit" value="Registrar"/>
+    <a href="http://localhost:8000/courses/" class="button">Volver</a>
 </form>
 
 <h2>Lista de Estudiantes</h2>

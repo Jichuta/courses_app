@@ -1,0 +1,85 @@
+{% include 'partials/navbar.html' %}
+
+<style>
+    table {
+      border-collapse: collapse;
+    }
+    tr, td, th { 
+      border: solid;
+      border-width: 1px;
+      padding: 5px;
+    }
+
+    .button {
+      font: bold 11px Arial;
+      text-decoration: none;
+      background-color: #EEEEEE;
+      color: #333333;
+      padding: 2px 6px 2px 6px;
+      border-top: 1px solid #CCCCCC;
+      border-right: 1px solid #333333;
+      border-bottom: 1px solid #333333;
+      border-left: 1px solid #CCCCCC;
+    }
+</style>
+
+<h1>Curso "{{ course.name }}"</h1>
+<h2>Lista de estudiantes registrados:</h2>
+
+<!-- <ul>
+    {% for cs in students %}
+        <li>{{ cs.student.name }} (CI: {{ cs.student.ci }}) - Nota: {{ cs.grade }} - Aprobado: {% if cs.isApproved %}Sí{% else %}No{% endif %}</li>
+    {% endfor %}
+</ul> -->
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>CI</th>
+            <th>Nota</th>
+            <th>Aprobado</th>
+            <th>Acciones</th>
+            <th>Asistencia {{today}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cs in students %}
+        <tr>
+            <td>{{ cs.student.name }}</td>
+            <td>{{ cs.student.ci }}</td>
+            <td>{{ cs.grade }}</td>
+            <td>{% if cs.isApproved %}Sí{% else %}No{% endif %}</td>
+            <td>
+                <button>Eliminar</button>
+                <input type="hidden" name="student_id" value="{{ cs.id }}">
+            </td>
+            <td>
+                {% if cs.attendance_today %}
+                    <p>{{ cs.attendance_today.get_type_display }}</p>
+                {% else %}
+                    <form action="{% url 'courses:register_attendance' cs.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <select name="attendance_type">
+                            {% for type, description in attendance_choices %}
+                            <option value="{{ type }}">{{ description }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit">Registrar Asistencia</button>
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% if isOngoingCourse %}
+<a href="{{ add_student_url }}"><button>Añadir nuevo estudiante</button></a>
+{% else %}
+<p style="color: red;">El inicio y fin del curso estan fuera del rango de la fecha de hoy {{today}}</p>
+<p style="color: red;">No se puede registrar nuevos estudiantes.</p>
+{% endif %}
+
+<a href="{{ volverUrl }}" class="button">Volver</a>

@@ -64,7 +64,7 @@
     <div class="navbar">
         <div class="profile">
             {% load static %}
-            <img src="{% static 'images/default_profile.png' %}" alt="User Profile">
+            <img src="{% static 'image/default_profile.png' %}" alt="User Profile">
             <span class="username">{{ request.session.username }} / {{request.session.user_role}}</span>
         </div>
         <form method="post" action="{% url 'courses:user_logout' %}">
