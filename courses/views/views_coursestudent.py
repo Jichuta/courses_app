@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from ..models import Course, Student, CourseStudent
 
+@login_required
 def add_course_student(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
 

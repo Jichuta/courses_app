@@ -4,9 +4,11 @@ from django.utils import timezone
 from django.contrib import messages
 from ..models import Course, CourseStudent, Attendance
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 
 # Create your views here.
+@login_required
 def index(request):
     courses = get_list_or_404(Course)
 
@@ -16,6 +18,7 @@ def index(request):
 
     return render(request, 'courses/index.html', context)
 
+@login_required
 def course_detail(request, course_id):
     isOngoingCourse = True
     today = timezone.now().date() ## + timedelta(1)

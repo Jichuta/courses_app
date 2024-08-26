@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.http import HttpResponse, Http404
+from django.contrib.auth.decorators import login_required
 from ..models import Student
 
+@login_required
 def students(request):
     students = get_list_or_404(Student)
 
@@ -9,6 +11,7 @@ def students(request):
 
     return render(request, 'courses/students.html', context)
 
+@login_required
 def save_student(request):
     try:
         student = Student(

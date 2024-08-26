@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from ..models import Teacher, Course
 
+@login_required
 def add_course(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -28,6 +30,7 @@ def add_course(request):
         }
         return render(request, 'courses/course.html', context)
 
+@login_required
 def delete_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     if request.method == 'POST':
