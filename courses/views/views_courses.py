@@ -39,7 +39,7 @@ def course_detail(request, course_id):
     attendance_choices = Attendance.ATTENDANCE_CHOICES
 
     
-    if today < course.start_date or today > course.end_date:
+    if today > course.end_date:
             isOngoingCourse = False
             messages.error(request, 'No se puede registrar la asistencia fuera de las fechas del curso.')     
 

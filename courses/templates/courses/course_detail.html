@@ -39,7 +39,7 @@
             <th>CI</th>
             <th>Nota</th>
             <th>Aprobado</th>
-            <th>Acciones</th>
+            <!-- <th>Acciones</th> -->
             <th>Asistencia {{today}}</th>
         </tr>
     </thead>
@@ -50,10 +50,10 @@
             <td>{{ cs.student.ci }}</td>
             <td>{{ cs.grade }}</td>
             <td>{% if cs.isApproved %}Sí{% else %}No{% endif %}</td>
-            <td>
+            <!-- <td>
                 <button>Eliminar</button>
                 <input type="hidden" name="student_id" value="{{ cs.id }}">
-            </td>
+            </td> -->
             <td>
                 {% if cs.attendance_today %}
                     <p>{{ cs.attendance_today.get_type_display }}</p>
@@ -78,8 +78,8 @@
 {% if isOngoingCourse %}
 <a href="{{ add_student_url }}"><button>Añadir nuevo estudiante</button></a>
 {% else %}
-<p style="color: red;">El inicio y fin del curso estan fuera del rango de la fecha de hoy {{today}}</p>
-<p style="color: red;">No se puede registrar nuevos estudiantes.</p>
+<!-- <p style="color: red;">El inicio y fin del curso estan fuera del rango de la fecha de hoy {{today}}</p> -->
+<p style="color: red;">El curso ya termino. No se puede registrar nuevos estudiantes.</p>
 {% endif %}
 
 <a href="{{ volverUrl }}" class="button">Volver</a>

@@ -1,8 +1,3 @@
-<!-- <ul>
-    {% for course in courses %}
-    <li><a href="{% url 'courses:course_detail' course.id %}">{{ course.name }}</a></li>
-    {% endfor %}
-</ul> -->
 <style>
     table {
       border-collapse: collapse;
@@ -29,6 +24,7 @@
     </thead>
     <tbody>
         {% for course in courses %}
+        {% if course.id %}
         <tr>
             <td><a href="{% url 'courses:course_detail' course.id %}">{{ course.name }}</a></td>
             <td>{{ course.teacher }}</td>
@@ -45,6 +41,7 @@
             </td>
             {% endif %}
         </tr>
+        {% endif %}
         {% endfor %}
     </tbody>
 </table>

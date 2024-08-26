@@ -54,9 +54,9 @@ Implementar un sistema que permita administrar cursos de capacitación de corta 
 - - [ ] Agregar material al curso.
 - [ ] Estudiantes: Pueden realizar las siguientes actividades:
 - - [x] Un estudiante puede ser registrado por el administrador
-- - [ ] también puede registrarse por su cuenta en el sistema (usuario de tipo Estudiante).
-- - [ ] Puede inscribirse a cursos que todavía no han empezado.
-- - [ ] Ver los cursos a los que se ha inscrito (y sus notas).
+- - [x] también puede registrarse por su cuenta en el sistema (usuario de tipo Estudiante).
+- - [x] Puede inscribirse a cursos que todavía no han empezado.
+- - [x] Ver los cursos a los que se ha inscrito (y sus notas).
 - - [ ] Ver el contenido de los cursos a los que está inscrito.
 - [x] Todos los tipos de usuario deben ingresar al sistema con su nombre de usuario y contraseña.
 
